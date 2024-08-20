@@ -1,44 +1,25 @@
 import { StyleSheet, TextInput, TouchableOpacity, Text, Alert } from 'react-native';
 import { View } from '@/components/Themed';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFonts, LilitaOne_400Regular } from '@expo-google-fonts/lilita-one';
 import { ZenTokyoZoo_400Regular } from '@expo-google-fonts/zen-tokyo-zoo';
 
-//const loadFonts = async () => {
-  //await Font.loadAsync({
-    //'LilitaOne': require('E:/WorkoutApp/FitnessApp/assets/fonts/LilitaOne-Regular.ttf'),
-    //'ZenTokyoZoo': require('E:/WorkoutApp/FitnessApp/assets/fonts/ZenTokyoZoo-Regular.ttf'),
-    // Add more fonts here if needed
-  //});
-//};
-
-
-
 export default function TabOneScreen() {
-
-  //const [fontsLoaded, setFontsLoaded] = useState(false);
 
   let [fontsLoaded] = useFonts({
     LilitaOne_400Regular,
     ZenTokyoZoo_400Regular
-    //add more if needed
   });
 
-
-  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  //useEffect(() => {
-    //(async () => {
-      //await loadFonts();
-      //setFontsLoaded(true);
-    //})();
-  //}, []);
-
-
   const handleLogin = () => {
     Alert.alert('Login Button Pressed', `Username: ${username}, Password: ${password}`);
+  };
+
+  const handleSignUp = () => {
+    Alert.alert('Sign Up Button Pressed');
   };
 
   return (
@@ -66,8 +47,12 @@ export default function TabOneScreen() {
       <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
-      {/*<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />*/}
+      <View style={styles.signUpContainer}>
+        <Text style={styles.signUpText}>Don't have an account? </Text>
+        <TouchableOpacity onPress={handleSignUp}>
+          <Text style={styles.signUpButtonText}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -97,7 +82,7 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingTop: 15,
     fontFamily: 'LilitaOne_400Regular',
-    alignSelf: 'flex-start', // Aligns the text to the left
+    alignSelf: 'flex-start',
     marginLeft: 20,
   },
   usernameInput: {
@@ -116,7 +101,7 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingTop: 40,
     fontFamily: 'LilitaOne_400Regular',
-    alignSelf: 'flex-start', // Aligns the text to the left
+    alignSelf: 'flex-start',
     marginLeft: 20,
   },
   passwordInput: {
@@ -154,9 +139,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  signUpContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  signUpText: {
+    fontSize: 16,
+    color: 'white',
+    fontFamily: 'LilitaOne_400Regular',
+  },
+  signUpButtonText: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+    fontFamily: 'LilitaOne_400Regular',
   },
 });
