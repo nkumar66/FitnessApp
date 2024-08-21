@@ -145,11 +145,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   signUpText: {
+    backgroundColor: '#212121',
     fontSize: 16,
     color: 'white',
     fontFamily: 'LilitaOne_400Regular',
   },
   signUpButtonText: {
+    backgroundColor: '#212121',
     fontSize: 16,
     color: 'white',
     fontWeight: 'bold',
